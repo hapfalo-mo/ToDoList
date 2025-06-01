@@ -24,6 +24,12 @@
   </head>
 
   <body>
+  <nav>
+    <% if authenticated? %>
+      <span>Welcome, <%= current_user.email %>!</span>
+      <%= button_to "Logout",logout_path, method: :delete %>
+    <% end %>
+  </nav>
     <%= yield %>
   </body>
 </html>
