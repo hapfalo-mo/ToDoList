@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to users_path, notice: "Logged in Successfully!!"
+      redirect_to to_dos_path, notice: "Logged in Successfully!!"
     else
       flash.now[:alert] = "Invalid out successfully!"
       render 'new'

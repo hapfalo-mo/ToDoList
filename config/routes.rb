@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :to_do_features
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   # get "login", to: "login#index"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :to_dos
   delete "logout", to: "sessions#destroy"
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)

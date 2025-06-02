@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "To do features" %>
+
+<h1>To do features</h1>
+
+<div id="to_do_features">
+  <% @to_do_features.each do |to_do_feature| %>
+    <%= render to_do_feature %>
+    <p>
+      <%= link_to "Show this to do feature", to_do_feature %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New to do feature", new_to_do_feature_path %>

@@ -1,0 +1,2 @@
+class ToDoFeature < ApplicationRecord
+end

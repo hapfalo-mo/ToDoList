@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @to_do_feature %>
+
+<div>
+  <%= link_to "Edit this to do feature", edit_to_do_feature_path(@to_do_feature) %> |
+  <%= link_to "Back to to do features", to_do_features_path %>
+
+  <%= button_to "Destroy this to do feature", @to_do_feature, method: :delete %>
+</div>

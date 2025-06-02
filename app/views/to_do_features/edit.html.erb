@@ -1,0 +1,12 @@
+<% content_for :title, "Editing to do feature" %>
+
+<h1>Editing to do feature</h1>
+
+<%= render "form", to_do_feature: @to_do_feature %>
+
+<br>
+
+<div>
+  <%= link_to "Show this to do feature", @to_do_feature %> |
+  <%= link_to "Back to to do features", to_do_features_path %>
+</div>
