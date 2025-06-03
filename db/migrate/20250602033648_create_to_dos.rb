@@ -5,7 +5,6 @@ class CreateToDos < ActiveRecord::Migration[8.0]
       t.string :description
       t.integer :status
       t.integer :userId
-
       t.timestamps
     end
   end

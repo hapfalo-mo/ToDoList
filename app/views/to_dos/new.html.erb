@@ -1,0 +1,13 @@
+<h1>New Task</h1>
+<%= form_with model: @to_do do |form| %>
+  <div>
+    <span>Name of task:</span>
+    <%= form.text_field :name %></div></n>
+    <span>Description of task:</span>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.submit %>
+    <%= link_to "Back", to_dos_path %>
+  </div>
+<% end %>

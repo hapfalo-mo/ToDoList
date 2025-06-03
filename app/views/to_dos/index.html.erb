@@ -1,2 +1,37 @@
-<h1>ToDo List Project</h1>
-<p></p>
+<h1>ToDoList</h1>
+<%= link_to "New Work", new_to_do_path %>
+<% if @to_dos.present? && @to_dos.any? %>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">CreatedAt</th>
+    <th scope="col">UpdatedAt</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <%
+  @to_dos.each do |todo|
+  %>
+      <td><%=todo.id%></td>
+      <td><%= todo.name %></td>
+      <td><%= todo.description %></td>
+      <td><%= todo.created_at%></td>
+      <td><%= todo.updated_at%></td>
+      <td>
+        <%= link_to  "Edit"%>
+        <%= button_to "Delete", data: {turbo_confirm: "Are you sure?"}%>
+        <%= button_to "Add detailed task", new_to_do_feature_path, method: :get%>
+      </td>
+    </tr>
+  <%end%>
+  <% else %>
+  <p>You haven't any records</p>
+  </tbody>
+  <%#= link_to "Home", root_path %>
+</table>
+<% end %>
