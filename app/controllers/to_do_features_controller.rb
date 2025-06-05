@@ -22,6 +22,7 @@ class ToDoFeaturesController < ApplicationController
   # POST /to_do_features or /to_do_features.json
   def create
     @to_do_feature = ToDoFeature.new(to_do_feature_params)
+    @to_do_feature.status = 0
 
     respond_to do |format|
       if @to_do_feature.save
@@ -65,6 +66,6 @@ class ToDoFeaturesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def to_do_feature_params
-      params.expect(to_do_feature: [ :name, :description, :status, :todoId ])
+      params.expect(to_do_feature: [ :name, :description ])
     end
 end
