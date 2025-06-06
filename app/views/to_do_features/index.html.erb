@@ -2,7 +2,12 @@
 
 <% content_for :title, "To do features" %>
 
-<h1>To do features</h1>
+<% if @todo %>
+  <h1>Welcome to, <%= @to_do.name %></h1>
+  <% else %>
+  <h1>All Todo Feature</h1>
+<% end %>
+
 <%= link_to "Back your task", to_dos_path %>
 <div id="to_do_features">
   <% @to_do_features.each do |to_do_feature| %>

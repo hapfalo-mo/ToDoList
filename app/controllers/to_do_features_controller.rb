@@ -3,7 +3,12 @@ class ToDoFeaturesController < ApplicationController
 
   # GET /to_do_features or /to_do_features.json
   def index
-    @to_do_features = ToDoFeature.all
+    if params[:to_do_id]
+      @to_do = ToDo.find(params[:to_do_id])
+      @to_do_features = @to_do.to_do_features
+    else
+      @to_do_features = ToDoFeature.all
+    end
   end
 
   # GET /to_do_features/1 or /to_do_features/1.json
@@ -23,10 +28,11 @@ class ToDoFeaturesController < ApplicationController
   def create
     @to_do_feature = ToDoFeature.new(to_do_feature_params)
     @to_do_feature.status = 0
+    @to_do_feature.to_do_id = @to_do.id
 
     respond_to do |format|
       if @to_do_feature.save
-        format.html { redirect_to @to_do_feature, notice: "To do feature was successfully created." }
+        format.html { redirect_to @to_do_features, notice: "To do feature was successfully created." }
         format.json { render :show, status: :created, location: @to_do_feature }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -63,7 +69,9 @@ class ToDoFeaturesController < ApplicationController
     def set_to_do_feature
       @to_do_feature = ToDoFeature.find(params.expect(:id))
     end
-
+  def set_to_do
+    @to_do = Todo.find(params.expect(:id))
+  end
     # Only allow a list of trusted parameters through.
     def to_do_feature_params
       params.expect(to_do_feature: [ :name, :description ])

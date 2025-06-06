@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_02_040020) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_06_041712) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -53,9 +53,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_02_040020) do
     t.string "name"
     t.string "description"
     t.integer "status"
-    t.integer "todoId"
+    t.integer "to_do_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["to_do_id"], name: "index_to_do_features_on_to_do_id"
   end
 
   create_table "to_dos", force: :cascade do |t|
@@ -76,4 +77,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_02_040020) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "to_do_features", "to_dos"
 end

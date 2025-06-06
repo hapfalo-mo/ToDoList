@@ -1,3 +1,3 @@
 class ToDoFeature < ApplicationRecord
-  belongs_to :to_do_feature
+  belongs_to :to_do
 end
